@@ -18,7 +18,7 @@ $router->get('/', function () use ($router) {
 });
 
 
-$router->get('league_players/raw/{id}', function($id) use ($router) {
+$router->get('league_players/raw/{id}', function($id) {
     $sql = "
             select * from 
             league_player lp
@@ -27,5 +27,8 @@ $router->get('league_players/raw/{id}', function($id) use ($router) {
             where lp.id = :id
         ";
 
-   return $router->app->db->select($sql, ['id' => $id]);
+   return app('db')->select($sql, ['id' => $id]);
 });
+
+
+$router->get('league_players/service/{id}', 'LeaguePlayerController@getLeaguePlayer');
