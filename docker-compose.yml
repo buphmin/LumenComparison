@@ -1,8 +1,10 @@
-version: '2'
+version: '2.2'
 services:
   web:
     network_mode: host
-    cpuset: "0-1"
+    cpus: 2.0
+#    cpus: '2.0'
+#    cpuset: "0-1"
     build:
       context: ./
       dockerfile: Dockerfile-web
@@ -11,7 +13,9 @@ services:
 
     container_name: lumen-web-running
   db:
-    cpuset: "2-3"
+    cpus: 2.0
+#    cpus: '2.0'
+#    cpuset: "2-3"
     build:
       context: ./
       dockerfile: Dockerfile-db
